@@ -11,12 +11,11 @@ class FieldsetError(ValueError):
 
 
 def slugify(value):
-    # stolen from django.template.defaultfilters.slugify
-    # only difference is this functions is substituting
-    # spaces with underscores instead of hyphens
-    value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore')
-    value = unicode(re.sub('[^\w\s-]', '', value).strip().lower())
-    return re.sub('[-\s]+', '_', value)
+    try:
+        from pytils.translit import slugify
+    except:
+        from django.template.defaultfilters import slugify
+    return slugify(value).replace('-', '_')
 
 
 class Fieldset(object):
