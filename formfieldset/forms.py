@@ -131,6 +131,8 @@ class Fieldset(object):
 
 
 class FieldsetMixin(object):
+    _tmpl = None
+
     _tmpl_table = (
         u'<tr><th colspan="2">%(title)s%(description)s</th></tr>%(fields)s',
         u'<h2>%s</h2>',
@@ -248,3 +250,10 @@ class FieldsetMixin(object):
     def as_fieldset_p(self):
         "Returns this form's fieldsets rendered as HTML <p>s."
         return self._html_fieldset_output(*self._tmpl_p)
+
+    def tmpl(self):
+        from django.template.loader import render_to_string
+        if self._tmpl:
+            return mark_safe(force_unicode(render_to_string(self._tmpl, { 'form': self })))
+        else:
+            return self.as_fieldset_p()            

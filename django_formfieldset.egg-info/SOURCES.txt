@@ -1,0 +1,14 @@
+LICENSE.txt
+MANIFEST.in
+README.rst
+django_formfieldset.egg-info/PKG-INFO
+django_formfieldset.egg-info/SOURCES.txt
+django_formfieldset.egg-info/dependency_links.txt
+django_formfieldset.egg-info/top_level.txt
+formfieldset/__init__.py
+formfieldset/forms.py
+formfieldset/models.py
+formfieldset/tests.py
+formfieldset/templates/formfieldset/form.html
+formfieldset/templatetags/__init__.py
+formfieldset/templatetags/formfieldset_tags.py
